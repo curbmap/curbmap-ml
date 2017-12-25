@@ -4,6 +4,12 @@ from PIL import Image, ImageFilter
 from shutil import move
 import openloacationcode
 
+"""
+This file checks a file's name with Open Location Code
+and EXIF GPS data to confirm it has been taken and uploaded
+from the location it was taken
+"""
+
 images = glob.glob("../curbmapbackend-js/uploads/*.jpg")
 for image in images:
     pil_image = Image.open(image)

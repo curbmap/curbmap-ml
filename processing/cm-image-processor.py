@@ -2,6 +2,14 @@ import glob
 import cv2
 from shutil import move
 
+"""
+Currently this file takes a photo, reduces its size
+then applies Contrast Limited Histogram Equalization
+to the intensities in the LAB plane and then reforms
+the BGR image.
+"""
+
+
 images = glob.glob("../curbmapbackend-js/processed/*.jpg")
 orb = cv2.ORB_create()
 
@@ -23,9 +31,4 @@ for image in images:
     lab_planes[0] = clahe.apply(lab_planes[0])
     lab_image = cv2.merge(lab_planes)
     cv_image = cv2.cvtColor(lab_image, cv2.COLOR_LAB2BGR)
-    cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
-
-    kp = orb.detect(cv_image, None)
-    kp, des = orb.compute(cv_image, kp)
-    img2 = cv2.drawKeypoints(cv_image, kp, None, color=(0, 255, 0), flags=0)
-    cv2.imwrite(newfilepath, img2)
+    cv2.imwrite(newfilepath, cv_image)
