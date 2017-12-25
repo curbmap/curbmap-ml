@@ -12,8 +12,9 @@ Problem: A user uploads a photo of multiple street signs in one image.
     4. Grayscale image (possibly not right to do since some images have Red nos and such)
 2. Bounding boxes for signs (CNN)
     1. [RetinaNet](https://github.com/fizyr/keras-retinanet)
-    2. Use [COCO trained weights](https://delftrobotics-my.sharepoint.com/personal/h_gaiser_fizyr_com/_layouts/15/guestaccess.aspx?docid=0386bb358d0d44762a7c705cdac052c2f&authkey=AfdlNvj1hPD8ZPShcqUFUZg&expiration=2017-12-28T16%3A09%3A58.000Z&e=5585e7262ac64651bf59990b54b406cd) (430MB - those are massive weights, I guess ResNet 101 would have been 1GB)
-    3. Crop segments from image into sub "signs"
+    2. Cannot use trained weights from COCO since there is no general sign category (only a trained "stop sign" one). Developed dataset of ~11000 annotations (too small) which has two categories (sign - ~5000 or notsign - ~6000). The dataset comes from a combination of two of ImageNet's synsets (n06793231 and n06794110). There is definitely some overlap of the two sets of images. However, hopefully, this will allow enough space for RetinaNet to learn the bounding boxes of signs. Training is happening now (though only on a NVIDIA 1070SC... it'll take days)
+    3. Run trained model on input photos from testing dataset to be collected to see if we get decent bounding boxes for signs.
+    4. Crop segments from image into sub "signs"
 3. Orient/upright/straighten the sign in each box
 4. Extract the text in the box
 5. Determine meaning from the text
