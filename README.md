@@ -26,6 +26,9 @@ Problem: A user uploads a photo of multiple street signs in one image.
         1. TextSpotter: https://arxiv.org/abs/1803.03474
             1. Algorithm rotates and arranges closest text into lines in a single CNN
             2. Since tf/Keras does not have the rotational layers we will have to use Caffe (why does it always come down to caffe :-( )
+        2. OR SegLink: https://arxiv.org/abs/1703.06520
+            1. 20fps
+            2. tf models code at: https://github.com/bgshih/seglink.git
 5. Determine meaning from the text
 
 
