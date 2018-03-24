@@ -22,6 +22,10 @@ Problem: A user uploads a photo of multiple street signs in one image.
     5. Crop segments from image into sub "signs"
 3. Orient/upright/straighten the sign in each box
 4. Extract the text in the box
+    1. From: https://github.com/chongyangtao/Awesome-Scene-Text-Recognition 
+        1. TextSpotter: https://arxiv.org/abs/1803.03474
+            1. Algorithm rotates and arranges closest text into lines in a single CNN
+            2. Since tf/Keras does not have the rotational layers we will have to use Caffe (why does it always come down to caffe :-( )
 5. Determine meaning from the text
 
 
